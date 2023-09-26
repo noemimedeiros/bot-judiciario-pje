@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../img/logo.png';
+import logo from '../../img/brasaoMini.png';
 import {Logo, MainHeader, DivDetalhes, HeaderDivCenter} from './HeaderStyle';
 
 function Header(){
@@ -14,7 +14,7 @@ function Header(){
                     <h3>Justiça Federal</h3>
                 </div>
                 <div className="fale-conosco">
-                    <a href="#" className='fale-conosco-link'>Fale conosco</a>
+                    <a href="/" className='fale-conosco-link'>Fale conosco</a>
                 </div>
             </HeaderDivCenter>
             <DivDetalhes>

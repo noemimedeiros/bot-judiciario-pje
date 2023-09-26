@@ -40,3 +40,51 @@ code {
   margin-top: 2%;
   margin-bottom: 2%;
 }
+
+.my-auto{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.modal{
+  width: 340px;
+  padding: 3px;
+  border: 1px solid #99a0a3;
+  display: none;
+  position: fixed;
+  bottom: 30%;
+  z-index: 15;
+  left: 40%;
+  background-color: white;
+}
+
+.modal-header{
+  background-color: #BED6F8;
+  color: #757A94;
+  padding-inline: 2%;
+  height: 35px;
+}
+
+.space-between{
+  justify-content: space-between;
+}
+
+.modal-content{
+  font-size: 0.9rem;
+  height: 80px;
+}
+
+.btn-modal-close{
+  color: #99a0a3;
+  border: 1px solid #99a0a3;
+  border-radius: 0;
+  background-color: white;
+}
+
+.is-open{
+  display: block;
+}
