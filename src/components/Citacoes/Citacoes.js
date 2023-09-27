@@ -24,17 +24,23 @@ function Citacoes({processo}){
     const [conteudoEditor, setConteudoEditor] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    const openModal = () => {
+    const openModal = async () => {
+        await sendToNotification()
         setModalIsOpen(true);
     };
 
+    // TODO extrair para um arquivo de utils -> /utils/api.js
     const sendToNotification = async () => {
+        const payload = JSON.stringify({
+            number: extractPhoneNumberOfString(processo.whatsapp),
+            messages: ["aqui vai o texto..."]
+        })
+        const headers = {headers:{"Content-Type" : "application/json"}}
+
         await axios.post(
-            "http://localhost:3001", // TODO adicionar como variável de ambiente
-            JSON.stringify({
-                number: extractPhoneNumberOfString(processo.whatsapp),
-                messages: ["aqui vai o texto..."]
-            })
+            "http://localhost:3001/send/message", // TODO adicionar como variável de ambiente
+            payload,
+            headers
         )
     }
 
