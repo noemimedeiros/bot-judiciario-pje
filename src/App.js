@@ -9,12 +9,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Layout/>}>
-        </Route>
-        <Route path='/citacao/1' element={<Citacoes processo={Processo1}/>}>
-        </Route>
-        <Route path='/citacao/2' element={<Citacoes processo={Processo2}/>}>
-        </Route>
+        <Route path='/' element={<Layout/>} />
+        <Route path='/citacao/1' element={<Citacoes processo={Processo1}/>} />
+        <Route path='/citacao/2' element={<Citacoes processo={Processo2}/>} />
       </Routes>
     </Router>
   );

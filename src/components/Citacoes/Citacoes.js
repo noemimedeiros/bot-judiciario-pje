@@ -4,6 +4,8 @@ import Layout from '../Layout/Layout';
 import Modal from '../Modal/Modal';
 import Navegacao from './Navegacao/Navegacao';
 import {BotaoNavegacao} from './Navegacao/NavegacaoStyle';
+import axios from "axios";
+
 import {
     DivCitacao,
     BotoesCitacao,
@@ -25,6 +27,22 @@ function Citacoes({processo}){
     const openModal = () => {
         setModalIsOpen(true);
     };
+
+    const sendToNotification = async () => {
+        await axios.post(
+            "http://localhost:3001", // TODO adicionar como variável de ambiente
+            JSON.stringify({
+                number: extractPhoneNumberOfString(processo.whatsapp),
+                messages: ["aqui vai o texto..."]
+            })
+        )
+    }
+
+    const extractPhoneNumberOfString = (number) => {
+        // TODO validar se é um número válido
+        // TODO extrair apenas os números da string, o retorno deve ser 55<DD>911111111
+        return 55 + number
+    }
 
     const closeModal = () => {
         setModalIsOpen(false);
