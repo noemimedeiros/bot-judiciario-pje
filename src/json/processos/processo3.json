@@ -5,16 +5,20 @@
     "rua": "Rua Artemiza Cirilo",
     "numero": "123",
     "bairro": "Maternidade",
+    "cep": "58700-000",
     "email": "renato.medeiros123.lopes@email.com",
-    "telefone": "(00) 99938-6898",
+    "telefone": "83999386898",
     "num_processo": "12345-67.2019.1.00.0001",
     "tipo_processo": "Ação de Execução Fiscal",
     "num_exequente": "123",
     "nome_executado": "Renato Medeiros Lopes",
     "cargo_do_juiz": "Juiz de Direito",
-    "whatsapp": "(83) 99938-6898",
+    "whatsapp": "83999386898",
     "valor_divida": "2.890,00",
     "link_documento": "https://exemplo.com/documento",
-    "num_validacao": "ABC123XYZ"
+    "num_validacao": "ABC123XYZ",
+    "autor_processo": "João Guilherme Dantas",
+    "autor_processo_cargo": "Servidor Geral",
+    "identificador": "100543-7604455"
 }
   

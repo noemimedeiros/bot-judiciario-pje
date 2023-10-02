@@ -13,6 +13,7 @@ code {
 }
 
 .titulo{
+  font-weight: 700;
   text-align: center;
 }
 
@@ -26,28 +27,6 @@ code {
 .header-div-center *{
   margin-top: auto;
   margin-bottom: auto;
-}
-
-.div-flex{
-  display: flex;
-}
-
-.gap-2{
-  gap: 5%;
-}
-
-.my-2{
-  margin-top: 2%;
-  margin-bottom: 2%;
-}
-
-.my-auto{
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-.text-center{
-  text-align: center;
 }
 
 .modal{
@@ -87,4 +66,8 @@ code {
 
 .is-open{
   display: block;
+}
+
+.border-darcienciaaspartes{
+  border: 1px solid #BFD6F8 !important;
 }

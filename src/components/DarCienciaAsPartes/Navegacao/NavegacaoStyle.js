@@ -5,12 +5,12 @@ export const BotaoNavegacao = styled.button`
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom: none;
-    background: linear-gradient(to top, #D9E7FB, #FFFFFF);
+    background: linear-gradient(to top, #BFD6F8, #FFFFFF);
     margin-inline: 2px;
     padding-inline: 10px;
 
-    &:hover{
-        background: linear-gradient(to top, #FFFFFF, #D9E7FB);
+    &:hover, &.active{
+        background: linear-gradient(to top, #FFFFFF, #BFD6F8);
     }
 `;
 

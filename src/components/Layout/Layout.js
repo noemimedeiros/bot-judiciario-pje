@@ -1,11 +1,13 @@
 import React from 'react';
-import Header from '../Header/Header';
+import {LayoutDiv} from './LayoutStyle';
 
-function Layout({children}) {
+function Layout({children, header}) {
   return (
     <div>
-      <Header/>
-      {children}
+      {header}
+      <LayoutDiv>
+        {children}
+      </LayoutDiv>
     </div>
   );
 }
