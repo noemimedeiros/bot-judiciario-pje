@@ -46,6 +46,7 @@ function DarCienciaAsPartes({processo}){
     const sendToNotification = async () => {
         const payload = JSON.stringify({
             number: extractPhoneNumberOfString(processo.whatsapp),
+            email: processo.email,
             messages: [
                 `Bom dia, sou Oficial de Justiça da Justiça Federal, ${processo.numero_vara} Vara da Subseção de ${processo.cidade} - ${processo.estado}`,
                 `Citação acerca de um processo de execução fiscal`,
