@@ -3,7 +3,6 @@ import logo from '../../img/brasaoMini.png';
 import {
     Logo,
     MainHeader,
-    DivDetalhes,
     HeaderDivCenter,
     HeaderBotoesMain
 } from './HeaderStyle';

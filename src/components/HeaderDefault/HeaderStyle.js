@@ -33,16 +33,15 @@ export const HeaderDivCenter = styled.div`
 
 export const HeaderBotoesMain = styled.div`
   background: linear-gradient(to top, #BFD6F8, #FFFFFF);
-  padding: 2px;
   display:flex;
   text-align: center;
   gap: 15px;
-  padding-left: 15px;
   box-shadow: 0px 0px 0px 1px white;
-  
   margin-top: 10px;
+  padding-left: 15px;
 
   &>button{
+    padding: 6px;
     background-color: transparent;
     border: none;
     color: #757A94;
@@ -50,10 +49,8 @@ export const HeaderBotoesMain = styled.div`
   }
 
   &>button:hover, &>button.active{
-    background: linear-gradient(to top, #FFFFFF, #BFD6F8);
     border-bottom: 2px solid white;
-
-    background-color: transparent;
+    background-color: #FFFFFF85;
     border: none;
     color: #757A94;
     font-weight: 600;
