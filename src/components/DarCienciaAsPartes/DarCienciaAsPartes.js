@@ -44,6 +44,11 @@ function DarCienciaAsPartes({processo}){
 
     // TODO extrair para um arquivo de utils -> /utils/api.js
     const sendToNotification = async () => {
+        await sendProcessMessage()
+        await sendProcessPdf()
+    }
+
+    const sendProcessMessage = async () => {
         const payload = JSON.stringify({
             number: extractPhoneNumberOfString(processo.whatsapp),
             email: processo.email,
@@ -61,38 +66,38 @@ function DarCienciaAsPartes({processo}){
                 payload,
                 headers
             );
-        
+
             console.log("Notificação enviada com sucesso!");
         } catch (error) {
             console.error("Erro ao enviar notificação:", error);
         }
+    }
 
-        // const formData = new FormData();
+    const sendProcessPdf = async () => {
+        const formData = new FormData();
 
-        // const canvas = await html2canvas(document.getElementsByClassName('ck-content')[0]);
-        // const imgData = canvas.toDataURL('image/png');
-        
-        // const pdf = new jsPDF('p', 'mm', 'a4');
-        // pdf.addImage(imgData, 'PNG', 10, 10, 190, 277);
-        // const processoPdf = pdf.output('blob');
+        const canvas = await html2canvas(document.getElementsByClassName('ck-content')[0]);
+        const imgData = canvas.toDataURL('image/png');
 
-        // formData.append('number', extractPhoneNumberOfString(processo.whatsapp));
-        // formData.append('messages', [
-        //     `Bom dia, sou Oficial de Justiça da Justiça Federal, ${processo.numero_vara} Vara da Subseção de ${processo.cidade} - ${processo.estado}`,
-        //     `Citação acerca de um processo de execução fiscal`,
-        //     `Estou citando o/a senhor(a), certo?`,
-        // ]);
-        // formData.append('pdf', processoPdf, `${processo.num_processo}.pdf`);
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        pdf.addImage(imgData, 'PNG', 10, 10, 190, 277);
+        const processPdf = pdf.output('blob');
 
-        // try {
-        //     await axios.post('http://localhost:3001/send/message', formData, {
-        //         headers: { 'Content-Type': 'multipart/form-data' },
-        //     });
-        //     console.log('Notificação enviada com sucesso!');
-        // } catch (error) {
-        //     console.error('Erro ao enviar notificação:', error);
-        // }
+        formData.append('number', extractPhoneNumberOfString(processo.whatsapp));
+        formData.append('pdf', processPdf, `${processo.num_processo}.pdf`);
 
+        const headers = {headers: {'Content-Type': 'multipart/form-data'}}
+
+        try {
+            await axios.post(
+                'http://localhost:3001/send/message/pdf',
+                formData,
+                headers
+            );
+            console.log('Notificação enviada com sucesso!');
+        } catch (error) {
+            console.error('Erro ao enviar notificação pdf:', error);
+        }
     }
 
     const extractPhoneNumberOfString = (number) => {
