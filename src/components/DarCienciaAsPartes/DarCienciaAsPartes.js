@@ -44,8 +44,7 @@ function DarCienciaAsPartes({processo}){
 
     // TODO extrair para um arquivo de utils -> /utils/api.js
     const sendToNotification = async () => {
-        await sendProcessMessage()
-        await sendProcessPdf()
+        await sendProcess()
     }
 
     const sendProcessMessage = async () => {
@@ -73,7 +72,7 @@ function DarCienciaAsPartes({processo}){
         }
     }
 
-    const sendProcessPdf = async () => {
+    const sendProcess = async () => {
         const formData = new FormData();
 
         const canvas = await html2canvas(document.getElementsByClassName('ck-content')[0]);
@@ -83,14 +82,21 @@ function DarCienciaAsPartes({processo}){
         pdf.addImage(imgData, 'PNG', 10, 10, 190, 277);
         const processPdf = pdf.output('blob');
 
+        const messages = [
+            `Justiça Federal, Citação acerca de um processo de execução fiscal\nVara: ${processo.numero_vara}\nNúmero do processo: ${processo.identificador}`,
+            `Olá ${processo.nome_executado}, Informamos que o senhor(a) está sendo notificado pela Justiça Federal a respeito de um processo em andamento. É importante que você esteja ciente dessa notificação e tome as medidas necessárias para se informar sobre os detalhes do processo e qualquer ação que possa ser requerida da sua parte. Certifique-se de buscar a orientação adequada para lidar com essa questão legal.`,
+        ]
+
         formData.append('number', extractPhoneNumberOfString(processo.whatsapp));
         formData.append('pdf', processPdf, `${processo.num_processo}.pdf`);
+        formData.append('messages', JSON.stringify(messages))
+        formData.append('email', processo.email)
 
         const headers = {headers: {'Content-Type': 'multipart/form-data'}}
 
         try {
             await axios.post(
-                'http://localhost:3001/send/message/pdf',
+                'http://localhost:3001/send/message',
                 formData,
                 headers
             );
